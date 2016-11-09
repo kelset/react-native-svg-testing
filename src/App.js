@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   _selectItem(){
-    console.log("change state", this.state.selected)
+    console.log("this state will be changed:", this.state.selected)
     this.setState({
       selected: !this.state.selected,
     })
@@ -35,13 +35,13 @@ class App extends Component {
     return (
       <View style={{flex:1, justifyContent: "space-around"}}>
         <Text style={{fontSize: 20, color:"black", alignSelf:"center"}}> This is a simple test for SVG </Text>
-        <View style={{flex:0.5}}>
+        <View style={{flex:0.7}}>
           <Draw selected={this.state.selected}/>
         </View>
-        <View style={{justifyContent: "space-around", flex: 0.4, alignItems:"center"}}>
+        <View style={{justifyContent: "space-around", flex: 0.2, alignItems:"center"}}>
           <Button title={"Test"} onPress={() => {this._selectItem()}}/>
-          <Button title={"Only 1"} onPress={() => {console.log("Hey!")}}/>
-          <Button title={"A couple"} onPress={() => {console.log("Hey!")}}/>
+          {/* <Button title={"Only 1"} onPress={() => {console.log("Hey!")}}/>
+          <Button title={"A couple"} onPress={() => {console.log("Hey!")}}/> */}
         </View>
       </View>
     );

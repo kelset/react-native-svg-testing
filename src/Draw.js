@@ -48,7 +48,17 @@ class Draw extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log("old props", this.props)
+    console.log("selected:", this.props.selected)
+    console.log("props have changed!", nextProps)
+    this.forceUpdate(() => {console.log("update forced oh god")})
+  }
+
   measureView(layout) {
+    console.log("the state", this.state)
+    console.log("the props", this.props)
+
     console.log('layout properties: ', layout);
 
     console.log('layout height: ', layout.height);
@@ -58,11 +68,12 @@ class Draw extends Component {
     console.log("The scaling value", scaling_value)
 
     this.setState({
-          x: layout.x,
-          y: layout.y,
-          width: layout.width,
-          height: layout.height,
-          scaleFactor: scaling_value,
+      ...this.state,
+      x: layout.x,
+      y: layout.y,
+      width: layout.width,
+      height: layout.height,
+      scaleFactor: scaling_value,
     })
   }
 
@@ -98,6 +109,7 @@ class Draw extends Component {
         <Text>width: {this.state.width}</Text>
         <Text>height: {this.state.height}</Text>
         <Text>scale: {this.state.scaleFactor}</Text>
+        <Text>selected: {this.props.selected.toString()}</Text>
       </View>
     );
   }
