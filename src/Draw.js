@@ -35,6 +35,7 @@ class Draw extends Component {
       width: any;
       height: any;
       scaleFactor: any;
+      k: number;
   };
 
   constructor(props) {
@@ -45,6 +46,7 @@ class Draw extends Component {
       width: 0,
       height: 0,
       scaleFactor: 0,
+      k:0,
     };
   }
 
@@ -52,15 +54,16 @@ class Draw extends Component {
     console.log("old props", this.props)
     console.log("selected:", this.props.selected)
     console.log("props have changed!", nextProps)
-    this.forceUpdate(() => {console.log("update forced oh god")})
+    this.setState({
+      ...this.state,
+      k: this.state.k + 1
+    })
+    console.log("the state", this.state)
+    console.log("the props", this.props)
   }
 
   measureView(layout) {
-    console.log("the state", this.state)
-    console.log("the props", this.props)
-
     console.log('layout properties: ', layout);
-
     console.log('layout height: ', layout.height);
 
     let scaling_value = layout.height / 200.0
@@ -86,7 +89,7 @@ class Draw extends Component {
             width={this.state.width}
           >
             <Defs>
-              <G id="shape">
+              <G id="shape" key={this.state.k} >
                 <G fill={this.props.selected? "red" : "coral"}>
                   <Circle cx="50" cy="50" r="50" />
                   <Rect x="50" y="50" width="50" height="50" />
