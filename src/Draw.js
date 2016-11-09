@@ -69,14 +69,14 @@ class Draw extends Component {
   render() {
     return (
       <View style={{flex:1, backgroundColor: "green"}}>
-        <View style={{backgroundColor: "coral", alignSelf:"center", height:300, width:300}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
+        <View style={{alignSelf:"center", height:300, width:300}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
           <Svg
             height={this.state.height}
             width={this.state.width}
           >
             <Defs>
               <G id="shape">
-                <G>
+                <G fill={this.props.selected? "red" : "coral"}>
                   <Circle cx="50" cy="50" r="50" />
                   <Rect x="50" y="50" width="50" height="50" />
                   <Circle cx="50" cy="50" r="5" fill="blue" />
