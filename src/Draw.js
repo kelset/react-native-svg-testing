@@ -51,24 +51,24 @@ class Draw extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log("old props", this.props)
-    console.log("selected:", this.props.selected)
-    console.log("props have changed!", nextProps)
+    // console.log("old props", this.props)
+    // console.log("selected:", this.props.selected)
+    // console.log("props have changed!", nextProps)
     this.setState({
       ...this.state,
-      k: this.state.k + 1
+      k: this.state.k + 1 // this is done in order to force the refresh for the SVG
     })
-    console.log("the state", this.state)
-    console.log("the props", this.props)
+    // console.log("the state", this.state)
+    // console.log("the props", this.props)
   }
 
   measureView(layout) {
-    console.log('layout properties: ', layout);
-    console.log('layout height: ', layout.height);
+    // console.log('layout properties: ', layout);
+    // console.log('layout height: ', layout.height);
 
     let scaling_value = layout.height / 200.0
 
-    console.log("The scaling value", scaling_value)
+    // console.log("The scaling value", scaling_value)
 
     this.setState({
       ...this.state,
