@@ -68,8 +68,8 @@ class Draw extends Component {
 
   render() {
     return (
-      <View>
-        <View style={{flex:1, backgroundColor: "coral"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
+      <View style={{flex:1}}>
+        <View style={{backgroundColor: "coral", height:300, width: 300, alignSelf:"center"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
           <Svg
             height={this.state.height}
             width={this.state.width}
@@ -90,7 +90,7 @@ class Draw extends Component {
               scale={this.state.scaleFactor}
             />
             <Use href="#shape" x="20" y="0"/>
-            <Use href="#shape" x="170"y="0" scale={this.state.scaleFactor}/>
+            <Use href="#shape" x="170"y="0"/>
           </Svg>
         </View>
         <Text>x: {this.state.x}</Text>
