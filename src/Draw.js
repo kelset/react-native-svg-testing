@@ -56,7 +56,7 @@ class Draw extends Component {
     // console.log("props have changed!", nextProps)
     this.setState({
       ...this.state,
-      k: this.state.k + 2 // this is done in order to force the refresh for the SVG
+      k: this.state.k + 6 // this is done in order to force the refresh for the SVG
     })
     // console.log("the state", this.state)
     // console.log("the props", this.props)
@@ -87,16 +87,44 @@ class Draw extends Component {
           <Defs>
             <G id="shape-one" key={this.state.k} >
               <G fill={this.props.selected.includes(1)? "red" : "coral"}>
-                <Circle cx="50" cy="50" r="50" />
-                <Rect x="50" y="50" width="50" height="50" />
-                <Circle cx="50" cy="50" r="5" fill="blue" />
+                <Circle cx="10" cy="10" r="10" />
+                <Rect x="10" y="10" width="10" height="10" />
+                <Circle cx="10" cy="10" r="1" fill="blue" />
               </G>
             </G>
             <G id="shape-two" key={this.state.k + 1} /*tbh this is pretty bad practise*/ >
               <G fill={this.props.selected.includes(2)? "deepskyblue" : "lightgreen"}>
-                <Circle cx="50" cy="50" r="50" />
-                <Rect x="50" y="50" width="50" height="50" />
-                <Circle cx="50" cy="50" r="5" fill="blue" />
+                <Circle cx="10" cy="10" r="10" />
+                <Rect x="10" y="10" width="10" height="10" />
+                <Circle cx="10" cy="10" r="1" fill="blue" />
+              </G>
+            </G>
+            <G id="shape-three" key={this.state.k + 2 } >
+              <G fill={this.props.selected.includes(3)? "red" : "coral"}>
+                <Circle cx="10" cy="10" r="10" />
+                <Rect x="10" y="10" width="10" height="10" />
+                <Circle cx="10" cy="10" r="1" fill="blue" />
+              </G>
+            </G>
+            <G id="shape-four" key={this.state.k + 3} >
+              <G fill={this.props.selected.includes(4)? "red" : "coral"}>
+                <Circle cx="10" cy="10" r="10" />
+                <Rect x="10" y="10" width="10" height="10" />
+                <Circle cx="10" cy="10" r="1" fill="blue" />
+              </G>
+            </G>
+            <G id="shape-five" key={this.state.k + 4} >
+              <G fill={this.props.selected.includes(5)? "red" : "coral"}>
+                <Circle cx="10" cy="10" r="10" />
+                <Rect x="10" y="10" width="10" height="10" />
+                <Circle cx="10" cy="10" r="1" fill="blue" />
+              </G>
+            </G>
+            <G id="shape-six" key={this.state.k + 5} >
+              <G fill={this.props.selected.includes(6)? "red" : "coral"}>
+                <Circle cx="10" cy="10" r="10" />
+                <Rect x="10" y="10" width="10" height="10" />
+                <Circle cx="10" cy="10" r="1" fill="blue" />
               </G>
             </G>
           </Defs>
@@ -106,8 +134,12 @@ class Draw extends Component {
             fill="blue"
             // scale={this.state.scaleFactor}
           />
-          <Use href="#shape-one" />
-          <Use href="#shape-two" x={100} y={100}/>
+          <Use href="#shape-one" x={15} y={15}/>
+          <Use href="#shape-two" x={45} y={45}/>
+          <Use href="#shape-three" x={75} y={75}/>
+          <Use href="#shape-four" x={105} y={105}/>
+          <Use href="#shape-five" x={135} y={135}/>
+          <Use href="#shape-six" x={165} y={165}/>
         </Svg>
       </View>
     );

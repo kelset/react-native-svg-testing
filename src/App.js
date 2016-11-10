@@ -40,10 +40,17 @@ class App extends Component {
             <Draw selected={this.state.selected}/>
           {/* </View> */}
         </View>
-        <View style={{justifyContent: "space-around", flex: 0.3, alignItems:"center", backgroundColor:"mintcream"}}>
-          <Button title={"Activate 1"} onPress={() => {this._selectItems([1])}}/>
-          <Button title={"Activate both"} onPress={() => {this._selectItems([1,2])}}/>
-          <Button title={"Turn off"} onPress={() => {this._selectItems([])}}/>
+        <View style={{flex: 0.3, flexDirection:"row", justifyContent: "space-around",}}>
+          <View style={{justifyContent: "space-around", flex:1, alignItems:"center", backgroundColor:"mintcream"}}>
+            <Button title={"Activate 1"} onPress={() => {this._selectItems([1])}}/>
+            <Button title={"Activate 2"} onPress={() => {this._selectItems([2])}}/>
+            <Button title={"Activate 3, 4"} onPress={() => {this._selectItems([3,4])}}/>
+          </View>
+          <View style={{justifyContent: "space-around", flex:1, alignItems:"center", backgroundColor:"mintcream"}}>
+            <Button title={"Activate 4,5,6"} onPress={() => {this._selectItems([4,5,6])}}/>
+            <Button title={"Activate all"} onPress={() => {this._selectItems([1,2,3,4,5,6])}}/>
+            <Button title={"Turn off"} onPress={() => {this._selectItems([])}}/>
+          </View>
         </View>
       </View>
     );
