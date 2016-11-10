@@ -83,7 +83,7 @@ class Draw extends Component {
   render() {
     return (
       <View style={{flex:1, backgroundColor: "green"}}>
-        <View style={{alignSelf:"center", height: 400, width: 400, backgroundColor:"darkorchid"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
+        <View style={{flex:1, minHeight: 50, minWidth: 50, backgroundColor:"darkorchid"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
           <Svg style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "200" + " " + "200"}>
             <Defs>
               <G id="shape" key={this.state.k} >
