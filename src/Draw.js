@@ -86,14 +86,14 @@ class Draw extends Component {
         <Svg style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "200" + " " + "200"}>
           <Defs>
             <G id="shape-one" key={this.state.k} >
-              <G fill={this.props.selected? "red" : "coral"}>
+              <G fill={this.props.selected.includes(1)? "red" : "coral"}>
                 <Circle cx="50" cy="50" r="50" />
                 <Rect x="50" y="50" width="50" height="50" />
                 <Circle cx="50" cy="50" r="5" fill="blue" />
               </G>
             </G>
             <G id="shape-two" key={this.state.k + 1} /*tbh this is pretty bad practise*/ >
-              <G fill={this.props.selected? "deepskyblue" : "lightgreen"}>
+              <G fill={this.props.selected.includes(2)? "deepskyblue" : "lightgreen"}>
                 <Circle cx="50" cy="50" r="50" />
                 <Rect x="50" y="50" width="50" height="50" />
                 <Circle cx="50" cy="50" r="5" fill="blue" />
