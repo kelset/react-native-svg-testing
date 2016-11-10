@@ -82,7 +82,7 @@ class Draw extends Component {
 
   render() {
     return (
-      <View style={{flex:1, minHeight: 50, minWidth: 50, backgroundColor:"darkorchid"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
+      <View style={{flex:1, minHeight: 50, minWidth: 50}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
         <Svg style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "200" + " " + "200"}>
           <Defs>
             <G id="shape-one" key={this.state.k} >
@@ -100,40 +100,40 @@ class Draw extends Component {
               </G>
             </G>
             <G id="shape-three" key={this.state.k + 2 } >
-              <G fill={this.props.selected.includes(3)? "red" : "coral"}>
+              <G fill={this.props.selected.includes(3)? "peru" : "pink"}>
                 <Circle cx="10" cy="10" r="10" />
                 <Rect x="10" y="10" width="10" height="10" />
                 <Circle cx="10" cy="10" r="1" fill="blue" />
               </G>
             </G>
             <G id="shape-four" key={this.state.k + 3} >
-              <G fill={this.props.selected.includes(4)? "red" : "coral"}>
+              <G fill={this.props.selected.includes(4)? "palevioletred" : "powderblue"}>
                 <Circle cx="10" cy="10" r="10" />
                 <Rect x="10" y="10" width="10" height="10" />
                 <Circle cx="10" cy="10" r="1" fill="blue" />
               </G>
             </G>
             <G id="shape-five" key={this.state.k + 4} >
-              <G fill={this.props.selected.includes(5)? "red" : "coral"}>
+              <G fill={this.props.selected.includes(5)? "rebeccapurple" : "rosybrown"}>
                 <Circle cx="10" cy="10" r="10" />
                 <Rect x="10" y="10" width="10" height="10" />
                 <Circle cx="10" cy="10" r="1" fill="blue" />
               </G>
             </G>
             <G id="shape-six" key={this.state.k + 5} >
-              <G fill={this.props.selected.includes(6)? "red" : "coral"}>
+              <G fill={this.props.selected.includes(6)? "skyblue" : "springgreen"}>
                 <Circle cx="10" cy="10" r="10" />
                 <Rect x="10" y="10" width="10" height="10" />
                 <Circle cx="10" cy="10" r="1" fill="blue" />
               </G>
             </G>
           </Defs>
-          <Rect
+          {/* <Rect
             height="200"
             width="200"
             fill="blue"
             // scale={this.state.scaleFactor}
-          />
+          /> */}
           <Use href="#shape-one" x={15} y={15}/>
           <Use href="#shape-two" x={45} y={45}/>
           <Use href="#shape-three" x={75} y={75}/>
