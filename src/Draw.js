@@ -56,7 +56,7 @@ class Draw extends Component {
     // console.log("props have changed!", nextProps)
     this.setState({
       ...this.state,
-      k: this.state.k + 1 // this is done in order to force the refresh for the SVG
+      k: this.state.k + 2 // this is done in order to force the refresh for the SVG
     })
     // console.log("the state", this.state)
     // console.log("the props", this.props)
@@ -82,12 +82,19 @@ class Draw extends Component {
 
   render() {
     return (
-      <View style={{flex:1, backgroundColor: "green"}}>
+      <View style={{height:350, width:350, backgroundColor: "green", alignSelf:"center"}}>
         <View style={{flex:1, minHeight: 50, minWidth: 50, backgroundColor:"darkorchid"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
           <Svg style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "200" + " " + "200"}>
             <Defs>
-              <G id="shape" key={this.state.k} >
+              <G id="shape-one" key={this.state.k} >
                 <G fill={this.props.selected? "red" : "coral"}>
+                  <Circle cx="50" cy="50" r="50" />
+                  <Rect x="50" y="50" width="50" height="50" />
+                  <Circle cx="50" cy="50" r="5" fill="blue" />
+                </G>
+              </G>
+              <G id="shape-two" key={this.state.k + 1} /*tbh this is pretty bad practise*/ >
+                <G fill={this.props.selected? "deepskyblue" : "lightgreen"}>
                   <Circle cx="50" cy="50" r="50" />
                   <Rect x="50" y="50" width="50" height="50" />
                   <Circle cx="50" cy="50" r="5" fill="blue" />
@@ -100,8 +107,8 @@ class Draw extends Component {
               fill="blue"
               // scale={this.state.scaleFactor}
             />
-            <Use href="#shape" />
-            <Use href="#shape" x={100} y={100}/>
+            <Use href="#shape-one" />
+            <Use href="#shape-two" x={100} y={100}/>
           </Svg>
         </View>
         <Text>x: {this.state.x}</Text>
