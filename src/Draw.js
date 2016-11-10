@@ -82,41 +82,33 @@ class Draw extends Component {
 
   render() {
     return (
-      <View style={{height:350, width:350, backgroundColor: "green", alignSelf:"center"}}>
-        <View style={{flex:1, minHeight: 50, minWidth: 50, backgroundColor:"darkorchid"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
-          <Svg style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "200" + " " + "200"}>
-            <Defs>
-              <G id="shape-one" key={this.state.k} >
-                <G fill={this.props.selected? "red" : "coral"}>
-                  <Circle cx="50" cy="50" r="50" />
-                  <Rect x="50" y="50" width="50" height="50" />
-                  <Circle cx="50" cy="50" r="5" fill="blue" />
-                </G>
+      <View style={{flex:1, minHeight: 50, minWidth: 50, backgroundColor:"darkorchid"}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
+        <Svg style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "200" + " " + "200"}>
+          <Defs>
+            <G id="shape-one" key={this.state.k} >
+              <G fill={this.props.selected? "red" : "coral"}>
+                <Circle cx="50" cy="50" r="50" />
+                <Rect x="50" y="50" width="50" height="50" />
+                <Circle cx="50" cy="50" r="5" fill="blue" />
               </G>
-              <G id="shape-two" key={this.state.k + 1} /*tbh this is pretty bad practise*/ >
-                <G fill={this.props.selected? "deepskyblue" : "lightgreen"}>
-                  <Circle cx="50" cy="50" r="50" />
-                  <Rect x="50" y="50" width="50" height="50" />
-                  <Circle cx="50" cy="50" r="5" fill="blue" />
-                </G>
+            </G>
+            <G id="shape-two" key={this.state.k + 1} /*tbh this is pretty bad practise*/ >
+              <G fill={this.props.selected? "deepskyblue" : "lightgreen"}>
+                <Circle cx="50" cy="50" r="50" />
+                <Rect x="50" y="50" width="50" height="50" />
+                <Circle cx="50" cy="50" r="5" fill="blue" />
               </G>
-            </Defs>
-            <Rect
-              height="200"
-              width="200"
-              fill="blue"
-              // scale={this.state.scaleFactor}
-            />
-            <Use href="#shape-one" />
-            <Use href="#shape-two" x={100} y={100}/>
-          </Svg>
-        </View>
-        <Text>x: {this.state.x}</Text>
-        <Text>y: {this.state.y}</Text>
-        <Text>width: {this.state.width}</Text>
-        <Text>height: {this.state.height}</Text>
-        <Text>scale: {this.state.scaleFactor}</Text>
-        <Text>selected: {this.props.selected.toString()}</Text>
+            </G>
+          </Defs>
+          <Rect
+            height="200"
+            width="200"
+            fill="blue"
+            // scale={this.state.scaleFactor}
+          />
+          <Use href="#shape-one" />
+          <Use href="#shape-two" x={100} y={100}/>
+        </Svg>
       </View>
     );
   }
