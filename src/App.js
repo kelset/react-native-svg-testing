@@ -34,7 +34,7 @@ class App extends Component {
     })
   }
 
-  _switchDrawing{
+  _switchDrawing(){
     console.log("swapping SVG")
     this.setState({
       selected: [],
