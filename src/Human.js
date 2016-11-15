@@ -49,7 +49,7 @@ class Human extends Component {
       width: 0,
       height: 0,
       k:0,
-      strokeWidth: 16,
+      strokeWidth: 10,
       strokeFill: "rgba(255, 255, 255, 1)",
     };
   }
@@ -88,7 +88,7 @@ class Human extends Component {
       <View style={{flex:1, minHeight: 50, minWidth: 50}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
         <Svg  style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "2200" + " " + "2400"} >
           <Defs>
-            <G onPress={()=>{console.log("i'm touched")}}>
+            <G>
               <G  id="body"
                   key={this.state.k}
                   fill={color_array[this.props.selected[0]]}
