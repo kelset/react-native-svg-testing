@@ -45,8 +45,8 @@ class App extends Component {
     return (
       <View style={{flex:1, justifyContent: "space-around"}}>
         <Text style={{fontSize: 20, color:"black", alignSelf:"center"}}> This is a simple test for SVG </Text>
-        <View style={{flex:0.5}}>
-          <View style={{height:200, width:200, alignSelf:"center", borderWidth: 0.5}}>
+        <View style={{flex:0.6}}>
+          <View style={{height:300, width:300, alignSelf:"center", borderWidth: 0.5}}>
             {this.state.draw?
               <Draw selected={this.state.selected}/>
             :
@@ -54,7 +54,7 @@ class App extends Component {
             }
           </View>
         </View>
-        <View style={{flex: 0.4, flexDirection:"row", justifyContent: "space-around",}}>
+        <View style={{flex: 0.3, flexDirection:"row", justifyContent: "space-around",}}>
           <View style={{justifyContent: "space-around", flex:1, alignItems:"center", backgroundColor:"mintcream"}}>
             <Button title={"Activate 1"} onPress={() => {this._selectItems([1])}}/>
             <Button title={"Activate 2"} onPress={() => {this._selectItems([2])}}/>
