@@ -29,6 +29,8 @@ import Svg,{
 
 let color_array = ["rgba(255, 255, 255, 1)", "rgba(84, 207, 174, 0.5)", "rgba(84, 207, 174, 1)"]; // this way, at 0-> none, at 2-> max opacity
 
+let first_time = true
+
 class Human extends Component {
 
   state: {
@@ -60,72 +62,84 @@ class Human extends Component {
     // console.log("props have changed!", nextProps)
     this.setState({
       ...this.state,
-      k: this.state.k + 6 // this is done in order to force the refresh for the SVG
+      k: this.state.k + 1 // this is done in order to force the refresh for the SVG
     })
     // console.log("the state", this.state)
     // console.log("the props", this.props)
   }
 
   measureView(layout) {
-    // console.log('layout properties: ', layout);
-    // console.log('layout height: ', layout.height);
+    console.log('layout properties: ', layout);
+    console.log('layout height: ', layout.height);
 
     //let scaling_value = layout.height / 200.0
 
     // console.log("The scaling value", scaling_value)
 
-    this.setState({
-      ...this.state,
-      x: layout.x,
-      y: layout.y,
-      width: layout.width,
-      height: layout.height,
-    })
+    if (first_time) {
+      first_time = !first_time
+      // console.log("Hi!")
+      this.setState({
+        ...this.state,
+        x: layout.x,
+        y: layout.y,
+        width: layout.width,
+        height: layout.height,
+        k: this.state.k + 1 // this is done in order to force the refresh for the SVG
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        x: layout.x,
+        y: layout.y,
+        width: layout.width,
+        height: layout.height,
+      })
+    }
   }
 
   render() {
     return (
       <View style={{flex:1, minHeight: 50, minWidth: 50}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
-        <Svg  style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "2200" + " " + "2400"} >
+        <Svg style={{ width: (this.state.width || 300), height: (this.state.height || 300) }} viewBox={"0 0 "+ "2200" + " " + "2400"}  key={this.state.k}>
           <Defs>
-            <G>
-              <G  id="body"
-                  key={this.state.k}
-                  fill={color_array[this.props.selected[0]]}
-                >
-                <Path
-                    d="M1257.5,709.2c0.9-6.2,2.1-11.2,2.6-11.2c0,0,0,0,0,0"
-                    stroke={this.state.strokeFill}
-                    strokeWidth={this.state.strokeWidth}
-                />
-                <Path
-                    d="M1277.8,1033.6c0-1.6-0.4-3.5-1-4.2c-0.6-0.7-0.9-1.3-0.6-1.3c0.3,0-0.1-2.1-1-4.8c-0.8-2.6-1.6-6.1-1.8-7.8
-                    		c-0.5-5.1-3.6-19.9-4.7-22.8c-0.6-1.5-1.9-3.2-2.9-3.8c-1.4-0.7-1.9-2.1-1.9-5.2c0-2.3-0.5-6-1-8.2c-0.5-2.2-1.4-16.2-1.9-31
-                    		c-1.2-34.9-2.6-45.6-11.9-91.5c-7-34.6-6.1-63.2,3.4-114.5c1.8-9.9,4.1-23.1,5-29.2c0.9-6.2,2.1-11.2,2.6-11.2c0,0,0,0,0,0l0-0.3
-                    		c0-91.5,27-176.8,73.4-248.2c-5.7-6-15.5-13.9-27.5-21.7c-12.6-8.2-15.7-9.8-33.5-16.8c-22.5-8.8-59.2-26.9-97.9-48.1
-                    		c-4.4-2.4-8.7-5.4-12.3-8.4c-26.8,11.6-56.3,18-87.3,18c-29.6,0-57.9-5.9-83.7-16.4c-3.1,3.3-7.5,6.8-12.8,10.3
-                    		c-14.1,9.3-68.9,35.7-92.2,44.3c-5.4,2-12.3,5.1-15.3,6.9c-9.8,5.9-13.2,7.6-20.9,10.7c-14.2,5.6-23.9,13.1-31.1,23.8
-                    		c-1.9,2.8-4.1,8.1-6.4,15.2c49.6,70.6,78.8,156.5,78.9,249.3c0.8,0.6,1.8,5.7,3.4,15.5c3.4,21.1,4.6,38.4,4.6,64
-                    		c-0.1,36.7-1.4,50.3-7.3,77c-8.3,37.2-8.4,38.2-8.6,62.5c-0.3,36.4-2.3,52.5-8.4,69.4c-5.4,14.8-8.6,34.3-10.3,65.4
-                    		c87.9,40.2,158.3,111.9,196.9,200.6c0.4-0.6,1.2-0.6,3,0.1c1.6,0.6,5.3,0.8,9,0.4c5-0.5,7.5-1.5,13-5.1c4.6-3,6.4-3.9,7.3-3.4
-                    		c37.3-86.9,105.1-157.6,189.9-198.6c-1.1-5.8-2.6-12.8-4.9-22.9C1278.3,1038.7,1277.8,1035.2,1277.8,1033.6z"
-                    stroke={this.state.strokeFill}
-                    strokeWidth={this.state.strokeWidth}
-                />
-                <Path
-                    d="M1012.8,1596c0-0.1,0-0.2,0.1-0.3"
-                    stroke={this.state.strokeFill}
-                    strokeWidth={this.state.strokeWidth}
-                />
-                <Path
-                    d="M891.5,716.5c0,0.3,0,0.6,0,0.9l3.4,14.7C893.3,722.1,892.4,717.1,891.5,716.5z"
-                    stroke={this.state.strokeFill}
-                    strokeWidth={this.state.strokeWidth}
-                />
-              </G>
+            <G  id="body"
+                fill={color_array[this.props.selected[0]]}
+                onPress={() => {alert("you pressed here!")}}
+              >
+              <Path
+                  d="M1257.5,709.2c0.9-6.2,2.1-11.2,2.6-11.2c0,0,0,0,0,0"
+                  stroke={this.state.strokeFill}
+                  strokeWidth={this.state.strokeWidth}
+              />
+              <Path
+                  d="M1277.8,1033.6c0-1.6-0.4-3.5-1-4.2c-0.6-0.7-0.9-1.3-0.6-1.3c0.3,0-0.1-2.1-1-4.8c-0.8-2.6-1.6-6.1-1.8-7.8
+                  		c-0.5-5.1-3.6-19.9-4.7-22.8c-0.6-1.5-1.9-3.2-2.9-3.8c-1.4-0.7-1.9-2.1-1.9-5.2c0-2.3-0.5-6-1-8.2c-0.5-2.2-1.4-16.2-1.9-31
+                  		c-1.2-34.9-2.6-45.6-11.9-91.5c-7-34.6-6.1-63.2,3.4-114.5c1.8-9.9,4.1-23.1,5-29.2c0.9-6.2,2.1-11.2,2.6-11.2c0,0,0,0,0,0l0-0.3
+                  		c0-91.5,27-176.8,73.4-248.2c-5.7-6-15.5-13.9-27.5-21.7c-12.6-8.2-15.7-9.8-33.5-16.8c-22.5-8.8-59.2-26.9-97.9-48.1
+                  		c-4.4-2.4-8.7-5.4-12.3-8.4c-26.8,11.6-56.3,18-87.3,18c-29.6,0-57.9-5.9-83.7-16.4c-3.1,3.3-7.5,6.8-12.8,10.3
+                  		c-14.1,9.3-68.9,35.7-92.2,44.3c-5.4,2-12.3,5.1-15.3,6.9c-9.8,5.9-13.2,7.6-20.9,10.7c-14.2,5.6-23.9,13.1-31.1,23.8
+                  		c-1.9,2.8-4.1,8.1-6.4,15.2c49.6,70.6,78.8,156.5,78.9,249.3c0.8,0.6,1.8,5.7,3.4,15.5c3.4,21.1,4.6,38.4,4.6,64
+                  		c-0.1,36.7-1.4,50.3-7.3,77c-8.3,37.2-8.4,38.2-8.6,62.5c-0.3,36.4-2.3,52.5-8.4,69.4c-5.4,14.8-8.6,34.3-10.3,65.4
+                  		c87.9,40.2,158.3,111.9,196.9,200.6c0.4-0.6,1.2-0.6,3,0.1c1.6,0.6,5.3,0.8,9,0.4c5-0.5,7.5-1.5,13-5.1c4.6-3,6.4-3.9,7.3-3.4
+                  		c37.3-86.9,105.1-157.6,189.9-198.6c-1.1-5.8-2.6-12.8-4.9-22.9C1278.3,1038.7,1277.8,1035.2,1277.8,1033.6z"
+                  stroke={this.state.strokeFill}
+                  strokeWidth={this.state.strokeWidth}
+              />
+              <Path
+                  d="M1012.8,1596c0-0.1,0-0.2,0.1-0.3"
+                  stroke={this.state.strokeFill}
+                  strokeWidth={this.state.strokeWidth}
+              />
+              <Path
+                  d="M891.5,716.5c0,0.3,0,0.6,0,0.9l3.4,14.7C893.3,722.1,892.4,717.1,891.5,716.5z"
+                  stroke={this.state.strokeFill}
+                  strokeWidth={this.state.strokeWidth}
+              />
             </G>
 
-            <G id="left-leg" key={this.state.k + 1} /*tbh this is pretty bad practise*/ fill={color_array[this.props.selected[1]]}>
+            <G  id="left-leg"
+                fill={color_array[this.props.selected[1]]}>
               <Path
                   d="M1265,1599.4c-5.3-19-6.1-25.2-7.1-44.9c-2-39.4,0.4-76.6,6.2-95c1-3.3,2.6-9.3,3.4-13.4
                   		c2.2-10.7,10.2-87.7,12.5-120.6c1.1-15.4,3.1-36.8,4.4-47.5c2.9-22.4,7.9-75.1,9.7-101.5c1.1-15.8,1-20-0.5-34
@@ -157,7 +171,8 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="right-leg" key={this.state.k + 2 } fill={color_array[this.props.selected[2]]}>
+            <G id="right-leg"
+              fill={color_array[this.props.selected[2]]}>
               <Path
                   d="M1012.8,1596c0-0.1,0-0.2,0.1-0.3c1.6-5.6,4.8-14.8,7.1-20.3s6.2-16.1,8.6-23.5c5-15.4,6.3-24.9,6.4-46.5
                   		c0-24.4,2.1-71.6,3.6-82c0.8-5.5,1.9-16,2.5-23.3c1.2-15.9,6.7-50.9,11.4-72.2c1.9-8.5,4.6-24.5,6.1-35.5c1.5-11,2.8-20.6,3-21.2
@@ -190,7 +205,8 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="left-arm" key={this.state.k + 3 } fill={color_array[this.props.selected[3]]}>
+            <G id="left-arm"
+              fill={color_array[this.props.selected[3]]}>
               <Path
                   d="M1400.4,846.7c-4.8-14.8-10.7-31.1-14.3-39.7c-7-16.4-7.5-17.5-9.9-27c-3.5-13.4-6.6-35.1-12.2-86.8
                   		c-3.2-29-4.2-52.1-4.4-103.7c-0.2-50.1-0.4-55-2.5-68.5c-5.3-34.8-11.8-56-20.6-68c-0.8-1.1-1.8-2.2-2.9-3.5
@@ -219,7 +235,8 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="right-arm" key={this.state.k + 4 } fill={color_array[this.props.selected[4]]}>
+            <G  id="right-arm"
+                fill={color_array[this.props.selected[4]]}>
               <Path
                   d="M805.6,493c-8.1,35-9.8,55-9.4,110c0.3,37.9,0.1,39.9-6.7,95.5c-1.4,11-3.4,29-4.6,40
                 		c-3.1,29.7-6.6,43.8-15.2,62.5c-1.6,3.6-4.7,11.5-6.8,17.5c-2.1,6-4.7,13.5-5.8,16.5c-1.2,3.4-2.6,7.6-3.9,12.2
@@ -248,7 +265,8 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="head" key={this.state.k + 5 } fill={color_array[this.props.selected[5]]}>
+            <G  id="head"
+                fill={color_array[this.props.selected[5]]}>
               <Path
                   d="M1162.3,354.4c-26.8,11.6-56.3,18-87.3,18c-29.6,0-57.9-5.9-83.7-16.4"
                   stroke={this.state.strokeFill}
