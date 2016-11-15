@@ -27,6 +27,8 @@ import Svg,{
   Stop
 } from 'react-native-svg';
 
+let color_array = ["none", "#8cd2a1", "#55cfaf"]; // this way, at 0-> none, at 2-> max opacity -- TODO: put actual same color with opacity
+
 class Human extends Component {
 
   state: {
@@ -34,7 +36,6 @@ class Human extends Component {
       y: any;
       width: any;
       height: any;
-      scaleFactor: any;
       k: number;
       strokeWidth: number;
   };
@@ -46,7 +47,6 @@ class Human extends Component {
       y: 0,
       width: 0,
       height: 0,
-      scaleFactor: 0,
       k:0,
       strokeWidth: 16,
     };
@@ -86,7 +86,7 @@ class Human extends Component {
       <View style={{flex:1, minHeight: 50, minWidth: 50}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
         <Svg style={{ width: this.state.width, height: this.state.height }} viewBox={"0 0 "+ "2200" + " " + "2400"}>
           <Defs>
-            <G id="body" key={this.state.k} fill="red">
+            <G id="body" key={this.state.k} fill={color_array[this.props.selected[0]]}>
               <Path
                   d="M1257.5,709.2c0.9-6.2,2.1-11.2,2.6-11.2c0,0,0,0,0,0"
                   stroke="blue"
@@ -117,7 +117,7 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="left-leg" key={this.state.k + 1} /*tbh this is pretty bad practise*/ >
+            <G id="left-leg" key={this.state.k + 1} /*tbh this is pretty bad practise*/ fill={color_array[this.props.selected[1]]}>
               <Path
                   d="M1265,1599.4c-5.3-19-6.1-25.2-7.1-44.9c-2-39.4,0.4-76.6,6.2-95c1-3.3,2.6-9.3,3.4-13.4
                   		c2.2-10.7,10.2-87.7,12.5-120.6c1.1-15.4,3.1-36.8,4.4-47.5c2.9-22.4,7.9-75.1,9.7-101.5c1.1-15.8,1-20-0.5-34
@@ -149,7 +149,7 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="right-leg" key={this.state.k + 2 } >
+            <G id="right-leg" key={this.state.k + 2 } fill={color_array[this.props.selected[2]]}>
               <Path
                   d="M1012.8,1596c0-0.1,0-0.2,0.1-0.3c1.6-5.6,4.8-14.8,7.1-20.3s6.2-16.1,8.6-23.5c5-15.4,6.3-24.9,6.4-46.5
                   		c0-24.4,2.1-71.6,3.6-82c0.8-5.5,1.9-16,2.5-23.3c1.2-15.9,6.7-50.9,11.4-72.2c1.9-8.5,4.6-24.5,6.1-35.5c1.5-11,2.8-20.6,3-21.2
@@ -182,7 +182,7 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="left-arm" key={this.state.k + 3 } >
+            <G id="left-arm" key={this.state.k + 3 } fill={color_array[this.props.selected[3]]}>
               <Path
                   d="M1400.4,846.7c-4.8-14.8-10.7-31.1-14.3-39.7c-7-16.4-7.5-17.5-9.9-27c-3.5-13.4-6.6-35.1-12.2-86.8
                   		c-3.2-29-4.2-52.1-4.4-103.7c-0.2-50.1-0.4-55-2.5-68.5c-5.3-34.8-11.8-56-20.6-68c-0.8-1.1-1.8-2.2-2.9-3.5
@@ -211,7 +211,7 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="right-arm" key={this.state.k + 4 } >
+            <G id="right-arm" key={this.state.k + 4 } fill={color_array[this.props.selected[4]]}>
               <Path
                   d="M805.6,493c-8.1,35-9.8,55-9.4,110c0.3,37.9,0.1,39.9-6.7,95.5c-1.4,11-3.4,29-4.6,40
                 		c-3.1,29.7-6.6,43.8-15.2,62.5c-1.6,3.6-4.7,11.5-6.8,17.5c-2.1,6-4.7,13.5-5.8,16.5c-1.2,3.4-2.6,7.6-3.9,12.2
@@ -240,7 +240,7 @@ class Human extends Component {
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
-            <G id="head" key={this.state.k + 5 } >
+            <G id="head" key={this.state.k + 5 } fill={color_array[this.props.selected[5]]}>
               <Path
                   d="M1162.3,354.4c-26.8,11.6-56.3,18-87.3,18c-29.6,0-57.9-5.9-83.7-16.4"
                   stroke="blue"

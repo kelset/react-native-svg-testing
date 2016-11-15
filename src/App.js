@@ -23,7 +23,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {selected:[], draw: true}; // let's move to something a bit more complex..
+    this.state = {selected:[0,0,0,0,0,0], draw: true}; // let's move to something a bit more complex..
   }
 
   _selectItems(selectionArray){
@@ -47,23 +47,23 @@ class App extends Component {
         <Text style={{fontSize: 20, color:"black", alignSelf:"center"}}> This is a simple test for SVG </Text>
         <View style={{flex:0.6}}>
           <View style={{height:300, width:300, alignSelf:"center", borderWidth: 0.5}}>
-            {this.state.draw?
+            {/* {this.state.draw?
               <Draw selected={this.state.selected}/>
-            :
+            : */}
               <Human selected={this.state.selected}/>
-            }
+            {/* } */}
           </View>
         </View>
         <View style={{flex: 0.3, flexDirection:"row", justifyContent: "space-around",}}>
           <View style={{justifyContent: "space-around", flex:1, alignItems:"center", backgroundColor:"mintcream"}}>
-            <Button title={"Activate 1"} onPress={() => {this._selectItems([1])}}/>
-            <Button title={"Activate 2"} onPress={() => {this._selectItems([2])}}/>
+            <Button title={"Activate 1"} onPress={() => {this._selectItems([2,0,0,0,0,0])}}/>
+            <Button title={"Activate 2"} onPress={() => {this._selectItems([0,2,0,0,0,0])}}/>
             <Button title={"Change"} onPress={() => {this._switchDrawing()}}/>
           </View>
           <View style={{justifyContent: "space-around", flex:1, alignItems:"center", backgroundColor:"mintcream"}}>
-            <Button title={"Activate 4,5,6"} onPress={() => {this._selectItems([4,5,6])}}/>
-            <Button title={"Activate all"} onPress={() => {this._selectItems([1,2,3,4,5,6])}}/>
-            <Button title={"Turn off"} onPress={() => {this._selectItems([])}}/>
+            <Button title={"Activate 4,5,6"} onPress={() => {this._selectItems([1,1,0,2,2,2])}}/>
+            <Button title={"Activate all"} onPress={() => {this._selectItems([2,2,1,2,1,2])}}/>
+            <Button title={"Turn off"} onPress={() => {this._selectItems([0,0,0,0,0,0])}}/>
           </View>
         </View>
       </View>
