@@ -27,7 +27,7 @@ import Svg,{
   Stop
 } from 'react-native-svg';
 
-let color_array = ["none", "#8cd2a1", "#55cfaf"]; // this way, at 0-> none, at 2-> max opacity -- TODO: put actual same color with opacity
+let color_array = ["rgba(255, 255, 255, 1)", "rgba(84, 207, 174, 0.5)", "rgba(84, 207, 174, 1)"]; // this way, at 0-> none, at 2-> max opacity
 
 class Human extends Component {
 
@@ -38,6 +38,7 @@ class Human extends Component {
       height: any;
       k: number;
       strokeWidth: number;
+      strokeFill: any;
   };
 
   constructor(props) {
@@ -49,6 +50,7 @@ class Human extends Component {
       height: 0,
       k:0,
       strokeWidth: 16,
+      strokeFill: "rgba(255, 255, 255, 1)",
     };
   }
 
@@ -89,7 +91,7 @@ class Human extends Component {
             <G id="body" key={this.state.k} fill={color_array[this.props.selected[0]]}>
               <Path
                   d="M1257.5,709.2c0.9-6.2,2.1-11.2,2.6-11.2c0,0,0,0,0,0"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
@@ -103,17 +105,17 @@ class Human extends Component {
                   		c-0.1,36.7-1.4,50.3-7.3,77c-8.3,37.2-8.4,38.2-8.6,62.5c-0.3,36.4-2.3,52.5-8.4,69.4c-5.4,14.8-8.6,34.3-10.3,65.4
                   		c87.9,40.2,158.3,111.9,196.9,200.6c0.4-0.6,1.2-0.6,3,0.1c1.6,0.6,5.3,0.8,9,0.4c5-0.5,7.5-1.5,13-5.1c4.6-3,6.4-3.9,7.3-3.4
                   		c37.3-86.9,105.1-157.6,189.9-198.6c-1.1-5.8-2.6-12.8-4.9-22.9C1278.3,1038.7,1277.8,1035.2,1277.8,1033.6z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
                   d="M1012.8,1596c0-0.1,0-0.2,0.1-0.3"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
                   d="M891.5,716.5c0,0.3,0,0.6,0,0.9l3.4,14.7C893.3,722.1,892.4,717.1,891.5,716.5z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
@@ -125,12 +127,12 @@ class Human extends Component {
                   		c0.2,0.1,0.4,0.2,0.5,0.4c0.6,0.8,2.1,9.2,3.3,18.7c1.4,10.6,4.5,26.6,8.1,41.3c7.5,31.1,18.5,84.3,21,101.5c1.1,7.4,2.4,21.4,3,31
                   		c0.6,9.6,1.5,21.6,2,26.5c0.5,5,1,15.3,1,23c0,9.8,0.6,17.4,2.1,25.4c2.3,12.5,9.6,34.6,15.2,45.6c1.9,3.9,5.9,13.1,8.8,20.5
                   		l5.2,13.5l0,0.2c8.4,0.9,16.8,1.4,25.5,1.4C1216.1,1612.1,1241.4,1607.6,1265,1599.4z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
                   d="M1164.2,1610.5l0,0.2c8.4,0.9,16.8,1.4,25.5,1.4c26.4,0,51.7-4.5,75.3-12.7"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
@@ -145,7 +147,7 @@ class Human extends Component {
                   		c0.3-0.3-0.1-2.3-0.9-4.5c-2.3-6.5-1.9-27.2,1.5-74.3c0.6-7.7,1.2-21.9,1.5-31.5c0.9-29.7,2.5-60.8,4-76c3.9-39.1,4.7-78.2,2-102
                   		c-1.9-17-8.6-50.8-13.1-66.5c-0.9-3-1.6-5.6-2.3-8.1c-23.6,8.2-48.9,12.7-75.3,12.7C1181.1,1612.1,1172.6,1611.6,1164.2,1610.7
                   		l0-0.2"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
@@ -157,12 +159,12 @@ class Human extends Component {
                   		c-1.6,4.8,6.9,89.1,13.1,129.7c0.8,5.5,2.4,16.8,3.6,25c1.1,8.2,3.2,20.8,4.5,28c1.3,7.1,2.4,14.5,2.4,16.4s1.1,10,2.5,18
                   		c1.4,8,3.4,21.7,4.5,30.4c4.2,32.6,8.4,55.8,11.9,66.3c7.2,21.2,6.6,17.2,6.6,49.5c0,16.2,0.4,36.9,0.9,46
                   		c0.8,16.1,0.8,16.9-2.2,32.5c-0.1,0.6-0.2,1.2-0.4,1.9c20.2,5.9,41.6,9,63.8,9C986.9,1599.4,1000,1598.2,1012.8,1596z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
                   d="M912.3,1556c0.8,16.1,0.8,16.9-2.2,32.5c-0.1,0.6-0.2,1.2-0.4,1.9"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
@@ -178,7 +180,7 @@ class Human extends Component {
                   		c-2.1-8.1-2.5-12.3-2.5-23.1c0-16.1,2.4-42.9,5.1-57.8c1.1-6.1,2.4-13.7,2.9-17s1.7-10.3,2.8-15.5c1.1-5.2,2.7-13.6,3.7-18.5
                   		s3.4-16.2,5.5-25c12.4-51.2,14.1-61,14.1-81.9c0-8.2-0.5-21.3-1-29c-5.2-69-5.2-72.3-1.2-86.5c-12.8,2.2-25.9,3.4-39.2,3.4
                   		C951.4,1599.4,930,1596.2,909.8,1590.4z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
@@ -189,7 +191,7 @@ class Human extends Component {
                   		c-46.4,71.4-73.4,156.6-73.4,248.2l0,0.3c0.5,0,0.9,0.6,0.9,1.4c0,5.3,3.6,32.9,6,46.2c2.8,15.4,9,41.5,14.6,61.5
                   		c2.4,8.5,2.7,11.4,2.9,28c0.1,11.3,0.7,20.4,1.5,23.5c0.7,2.5,2.1,7,3.9,12.2c1.6,0,3.2,0.1,4.9,0.1
                   		C1332.6,870.8,1368.4,862.1,1400.4,846.7z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
@@ -207,7 +209,7 @@ class Human extends Component {
                   		c-8.2-7.1-17.6-15.9-20.9-19.5c-6.7-7.2-9-12.2-14.9-32.8c-1.8-6.3-4.9-16-6.8-21.5c-5.3-15-15.4-47-17.6-55.6
                   		c-1.9-7.5-4-19.8-6.1-35.4c-2-15-5.1-35.9-9-60c-2.2-13.2-5.3-33.2-6.9-44.5c-1.7-11.3-4-24.3-5.1-29c-1.4-5.7-4.2-15.1-7.6-25.3
                   		c-31.9,15.4-67.8,24.1-105.6,24.1C1293.2,870.8,1291.5,870.8,1289.9,870.7z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
@@ -217,7 +219,7 @@ class Human extends Component {
                 		c-3.1,29.7-6.6,43.8-15.2,62.5c-1.6,3.6-4.7,11.5-6.8,17.5c-2.1,6-4.7,13.5-5.8,16.5c-1.2,3.4-2.6,7.6-3.9,12.2
                 		c22.2,6.6,45.6,10.2,70,10.2c14.8,0,29.2-1.3,43.3-3.8c0.3-1,0.6-1.9,0.7-2.6c0.6-2.5,1.2-12.8,1.3-23c0.2-16.6,0.5-19.5,2.9-28
                 		c6.8-24.2,15.7-61,17.2-71.2c1.3-8.7,2.1-12.9,3-12.3c-0.2-92.8-29.4-178.7-78.9-249.3C810.3,474.2,807.9,483,805.6,493z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
@@ -236,14 +238,14 @@ class Human extends Component {
                   		c-0.4-4.4-0.2-10.5,0.5-15c0.6-4.1,1.4-9.5,1.7-12c0.3-2.5,0.9-5.4,1.4-6.5c1.4-3.4,7.6-20.8,16.1-45.5
                   		c13.3-38.6,19.9-55,33.7-84.5c10.5-22.3,23.5-55.3,37.4-94.5c3.1-8.8,9.5-24.6,12.8-31.5c2-4.3,9.8-26.8,12.5-35.9
                   		c-14,2.5-28.5,3.8-43.3,3.8C798.9,857.4,775.4,853.8,753.2,847.2z"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
             <G id="head" key={this.state.k + 5 } fill={color_array[this.props.selected[5]]}>
               <Path
                   d="M1162.3,354.4c-26.8,11.6-56.3,18-87.3,18c-29.6,0-57.9-5.9-83.7-16.4"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
               <Path
@@ -260,7 +262,7 @@ class Human extends Component {
               			c0.7,1.9,1.9,4.7,2.7,6.2c2,3.8,3.6,12.6,4.1,22.8c0.5,10.2,0.5,8.9-0.6,27.5c-1.2,18.9-2.6,29.3-4.7,35.5l-1.7,4.8l2.7,3.2
               			c2.9,3.4,6.7,14.4,6.7,19.2c0,5.1-4.9,25-8.3,33.7c-2,5.2-4.5,9.6-6.7,11.8c-3.4,3.4-4.1,3.7-9.5,3.8l-3,0.1l-2.8,14
               			c-4.2,20.6-4.4,21.7-5.5,25c-0.9,3-0.8,16.5,0.3,31.8c0.8,11.7,4.1,26.3,6.9,31.1c1.9,3.2,5,6.6,8.9,10"
-                  stroke="blue"
+                  stroke={this.state.strokeFill}
                   strokeWidth={this.state.strokeWidth}
               />
             </G>
