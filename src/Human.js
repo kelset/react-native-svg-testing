@@ -105,7 +105,6 @@ class Human extends Component {
           <Defs>
             <G  id="body"
                 fill={color_array[this.props.selected[0]]}
-                onPress={() => {alert("you pressed here!")}}
               >
               <Path
                   d="M1257.5,709.2c0.9-6.2,2.1-11.2,2.6-11.2c0,0,0,0,0,0"
@@ -266,7 +265,8 @@ class Human extends Component {
               />
             </G>
             <G  id="head"
-                fill={color_array[this.props.selected[5]]}>
+                fill={color_array[this.props.selected[5]]}
+              >
               <Path
                   d="M1162.3,354.4c-26.8,11.6-56.3,18-87.3,18c-29.6,0-57.9-5.9-83.7-16.4"
                   stroke={this.state.strokeFill}
