@@ -51,7 +51,7 @@ class Human extends Component {
       width: 0,
       height: 0,
       k:0,
-      strokeWidth: 10,
+      strokeWidth: 0,
       strokeFill: "rgba(255, 255, 255, 1)",
     };
   }
