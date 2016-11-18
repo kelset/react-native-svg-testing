@@ -56,7 +56,7 @@ class Human extends Component {
       height: 0,
       k:0,
       strokeWidth: 0,
-      strokeFill: "rgba(255, 255, 255, 1)",
+      strokeFill: "rgba(84, 207, 174, 1)",
     };
   }
 
@@ -103,7 +103,7 @@ class Human extends Component {
   }
 
   _toBase64(){
-    this.svgbody.toDataURL(base64 => {
+    this.svgBody.toDataURL(base64 => {
         console.log(base64);
     });
   }
@@ -111,7 +111,7 @@ class Human extends Component {
   render() {
     return (
       <View style={{flex:1, minHeight: 50, minWidth: 50}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
-        <Svg style={{ width: (300), height: (300) }} viewBox={"0 0 "+ "2200" + " " + "2400"}  key={this.state.k} >
+        <Svg style={{ width: (300), height: (300) }} viewBox={"0 0 "+ "2200" + " " + "2400"}  key={this.state.k} ref={(svg) => this.svgBody = svg}>
           <Defs>
             <G  id="body"
                 fill={color_array[this.props.selected[0]]}
@@ -309,7 +309,7 @@ class Human extends Component {
           <Use href="#left-leg"/>
         </Svg>
 
-        <Button title={"Turn to base64"} style={{flex:0.2}} onPress={() => {this._toBase64(svgbody)}}/>
+        <Button title={"Turn to base64"} style={{flex:0.2}} onPress={() => {this._toBase64()}}/>
       </View>
     );
   }
