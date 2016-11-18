@@ -7,7 +7,8 @@ import {
   AppRegistry,
   StyleSheet,
   View,
-  Text
+  Text,
+  Button
 } from 'react-native';
 
 import Svg,{
@@ -45,6 +46,9 @@ class Human extends Component {
 
   constructor(props) {
     super(props);
+
+    this._toBase64 = this._toBase64.bind(this);
+
     this.state = {
       x: 0,
       y: 0,
@@ -98,10 +102,16 @@ class Human extends Component {
     }
   }
 
+  _toBase64(){
+    this.svgbody.toDataURL(base64 => {
+        console.log(base64);
+    });
+  }
+
   render() {
     return (
       <View style={{flex:1, minHeight: 50, minWidth: 50}} onLayout={(event) => this.measureView(event.nativeEvent.layout)}>
-        <Svg style={{ width: (this.state.width || 300), height: (this.state.height || 300) }} viewBox={"0 0 "+ "2200" + " " + "2400"}  key={this.state.k}>
+        <Svg style={{ width: (300), height: (300) }} viewBox={"0 0 "+ "2200" + " " + "2400"}  key={this.state.k} >
           <Defs>
             <G  id="body"
                 fill={color_array[this.props.selected[0]]}
@@ -298,6 +308,8 @@ class Human extends Component {
           <Use href="#right-leg"/>
           <Use href="#left-leg"/>
         </Svg>
+
+        <Button title={"Turn to base64"} style={{flex:0.2}} onPress={() => {this._toBase64(svgbody)}}/>
       </View>
     );
   }
